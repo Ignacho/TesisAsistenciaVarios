@@ -1,0 +1,51 @@
+GIT REPO
+--------------
+C:\Users\Ignacio\Documents\GitHub\TesisAsistenciaWS
+
+
+-Descargar GitHubDesktop para gestionar versionado de código con GitHub->Heroku(te instala automaticamente Microsoft .NET Framework 4.5.2)
+-Me creó el repo en: C:\Users\Ignacio\Documents\GitHub (desde aca ABM archivos, posteriormente con el GitHubDesktop gestiona los commit y push)
+-copiar los componentes
+-commit
+-push!
+
+
+https://asistencia2017.herokuapp.com/
+http://localhost/workspace/APP/public/api/registrarAsistencia
+
+HEROKU DATA DB
+-------------------------
+-abrir la consola
+-posicionarse en la carpeta donde se descargo el repo de git
+-heroku login
+	correo:ignachobarberis@gmail.com
+	psw:...
+-heroku config --app asistencia2017(nombre de la app)	
+-CLEARDB_DATABASE_URL: mysql://b950b27eb27af9:dce8e130@us-cdbr-iron-east-03.cleardb.net/heroku_8636d613bba5fb8?reconnect=true
+-CLEARDB_DATABASE_URL => mysql://[username]:[password]@[host]/[databasename]?reconnect=true
+
+-Importo la DB usando MySQL Workbench (cargo los datos de la conexion a DB obtenidos anteriormente)
+DB_CONNECTION=mysql
+DB_HOST=us-cdbr-iron-east-05.cleardb.net
+DB_PORT=3306
+DB_DATABASE=heroku_dc62854be722bdd
+DB_USERNAME=b04a61dc1ca9f2
+DB_PASSWORD=fa0908b6
+
+-Crear Procfile(?) y ponerlo adentro de la carpeta APP
+
+
+PHONEGAP -> INSTALAR PHONEGAP - CLI
+http://docs.phonegap.com/references/phonegap-cli/install/
+
+COMANDOS PHONEGAP
+-----------------------------------
+npm install -g phonegap (en teoría siempre descarga la última versión)
+
+npm install -g phonegap@5.1.1
+
+npm info phonegap
+
+phonegap create Asistencia_1.0 (dentro de path donde se quiera crear. "cd C:\Users\Ignacio\Desktop")
+
+phonegap serve
