@@ -10,7 +10,7 @@ C:\Users\Ignacio\Documents\GitHub\TesisAsistenciaWS
 -push!
 
 
-https://asistencia2017.herokuapp.com/
+https://asistencia2017.herokuapp.com/api/registrarAsistencia
 http://localhost/workspace/APP/public/api/registrarAsistencia
 
 HEROKU DATA DB
@@ -21,8 +21,9 @@ HEROKU DATA DB
 	correo:ignachobarberis@gmail.com
 	psw:...
 -heroku config --app asistencia2017(nombre de la app)	
--CLEARDB_DATABASE_URL: mysql://b950b27eb27af9:dce8e130@us-cdbr-iron-east-03.cleardb.net/heroku_8636d613bba5fb8?reconnect=true
+-CLEARDB_DATABASE_URL: mysql://b04a61dc1ca9f2:fa0908b6@us-cdbr-iron-east-05.cleardb.net/heroku_dc62854be722bdd?reconnect=true
 -CLEARDB_DATABASE_URL => mysql://[username]:[password]@[host]/[databasename]?reconnect=true
+
 
 -Importo la DB usando MySQL Workbench (cargo los datos de la conexion a DB obtenidos anteriormente)
 DB_CONNECTION=mysql
@@ -32,20 +33,97 @@ DB_DATABASE=heroku_dc62854be722bdd
 DB_USERNAME=b04a61dc1ca9f2
 DB_PASSWORD=fa0908b6
 
+
 -Crear Procfile(?) y ponerlo adentro de la carpeta APP
 
 
 PHONEGAP -> INSTALAR PHONEGAP - CLI
 http://docs.phonegap.com/references/phonegap-cli/install/
+https://cordova.apache.org/docs/es/latest/guide/cli/
 
-COMANDOS PHONEGAP
+COMANDOS PHONEGAP/CORDOVA
 -----------------------------------
 npm install -g phonegap (en teoría siempre descarga la última versión)
+npm install -g cordova
 
 npm install -g phonegap@5.1.1
 
 npm info phonegap
 
 phonegap create Asistencia_1.0 (dentro de path donde se quiera crear. "cd C:\Users\Ignacio\Desktop")
+cordova create Asistencia_2_0
+
+cordova platforms ls (listado de plataformas disponibles)
+
+cordova platform add ios
+cordova platform add android
+cordova platform add wp
 
 phonegap serve
+
+CAMBIAR MSJ DE ALERT(no anduvo)
+navigator.notification.alert(
+				'Por favor seleccione la falta para todos los alumnos',  // message
+				alertDismissed,         // callback
+				'Game Over',            // title
+				'Done'                  // buttonName
+			);
+
+
+FALTANTES APP
+-------------
+-JOB confirmar asistencia
+-Mejorar estilo mensajes
+-login, cuando apretas en teclado "ir" no me oculta el teclado para ir a iniciar session
+-Mejorar logo app
+
+http://localhost/workspace/APP/public/api/login
+http://localhost/workspace/APP/public/api/materia
+http://localhost/workspace/APP/public/api/registrarAsistencia
+http://localhost/workspace/APP/public/api/inscripto?id_curso=
+
+https://asistencia2017.herokuapp.com/api/login
+https://asistencia2017.herokuapp.com/api/materia
+https://asistencia2017.herokuapp.com/api/registrarAsistencia
+https://asistencia2017.herokuapp.com/api/inscripto?id_curso=
+
+
+php artisan update:asistencia
+
+heroku -app asistencia2017 config:add TZ="America/Argentina/Buenos_Aires"
+
+heroku config:add TZ="America/Argentina/Buenos_Aires"
+
+MODIFIQUE PARA CORREGIR HORARIO
+app.php {'timezone' => env('APP_TIMEZONE', 'America/Argentina/Buenos_Aires'),}
+.env {APP_TIMEZONE = America/Argentina/Buenos_Aires}
+
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+BACKUP DB
+---------
+C:\Users\Ignacio\Documents\dumps
+
+
+JOB
+-Tocamos el archivo app\Console\Kernel.php
+-Creamos el archivo app\console\Commands\Update Asistencia.php
+-Configuramos en Heroku la invocaión al mismo
+
+ZONA HORARIA
+-Tocamos el archivo config\app.php: 'timezone' => env('APP_TIMEZONE', 'America/Argentina/Buenos_Aires'),
+-Tocamos el archivo .env
+
+FALTANTES
+-Configurar zona horaria que no anda
+-filtrar por las alt horarias
+-JOB alumnos presentes cursos sin registrar ?
+-En el listado de alumnos mostrar ademas de la meteria la altenativa
+	
+
+AM  8-12
+IM	14-18
+PM	18-22
+
+ALTER TABLE dictados_clase ADD CONSTRAINT `DCE_DDO_FK` FOREIGN KEY (`id_dictado`) REFERENCES `dictados` (`id`);
+ALTER TABLE tesis.asistencias_cursos DROP foreign key ACS_DDO_FK;
