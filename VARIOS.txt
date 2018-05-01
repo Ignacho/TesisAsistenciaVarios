@@ -115,10 +115,10 @@ ZONA HORARIA
 -Tocamos el archivo .env
 
 FALTANTES
--Configurar zona horaria que no anda
--filtrar por las alt horarias
--JOB alumnos presentes cursos sin registrar ?
--En el listado de alumnos mostrar ademas de la meteria la altenativa
+-(ok)Configurar zona horaria que no anda
+-(no va)filtrar por las alt horarias
+-(ok)JOB alumnos presentes cursos sin registrar ?
+-(no va)En el listado de alumnos mostrar ademas de la meteria la altenativa
 	
 
 AM  8-12
@@ -127,3 +127,5 @@ PM	18-22
 
 ALTER TABLE dictados_clase ADD CONSTRAINT `DCE_DDO_FK` FOREIGN KEY (`id_dictado`) REFERENCES `dictados` (`id`);
 ALTER TABLE tesis.asistencias_cursos DROP foreign key ACS_DDO_FK;
+
+
