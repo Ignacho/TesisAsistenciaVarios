@@ -128,4 +128,10 @@ PM	18-22
 ALTER TABLE dictados_clase ADD CONSTRAINT `DCE_DDO_FK` FOREIGN KEY (`id_dictado`) REFERENCES `dictados` (`id`);
 ALTER TABLE tesis.asistencias_cursos DROP foreign key ACS_DDO_FK;
 
+CONFIGURAR LOCALHOST WAMP: C:\wamp64\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf
 
+php artisan serve
+node/npm
+composer
+chmod -R 777 storage/ (dentro del proyecto)
+php.ini descomentamos linea "always_populate_raw_post_data = -1"
